@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace RNR_sDiscordBot
 {
@@ -10,6 +7,8 @@ namespace RNR_sDiscordBot
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Test:"+ Config.bot.token);
+            Console.Read();
         }
     }
 }
