@@ -34,10 +34,9 @@ namespace RNR_sDiscordBot
                 var result = await service.ExecuteAsync(context, argPos);
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
-                    Console.WriteLine(result.ErrorReason+"drop");
+                    Console.WriteLine(result.ErrorReason);
                 }
             }
-
         }
     }
 }
