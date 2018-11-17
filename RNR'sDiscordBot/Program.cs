@@ -15,7 +15,7 @@ namespace RNR_sDiscordBot
 
         private async Task StartAsync()
         {
-            if (Config.bot.token == null || Config.bot.token == "") return;
+            if (Config.bot.token ==""  || Config.bot.token == null) return;
             client = new DiscordSocketClient(new DiscordSocketConfig
             {
                 LogLevel = LogSeverity.Verbose
@@ -27,7 +27,6 @@ namespace RNR_sDiscordBot
             handler = new CommandHandler();
             await handler.InitializeAsync(client);
             await Task.Delay(-1);
-
         }
 
         private async Task Log(LogMessage msg)

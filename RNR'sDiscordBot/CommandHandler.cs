@@ -13,6 +13,7 @@ namespace RNR_sDiscordBot
     {
         DiscordSocketClient client;
         CommandService service;
+
         public async Task InitializeAsync(DiscordSocketClient client)
         {
             this.client = client;
@@ -31,12 +32,12 @@ namespace RNR_sDiscordBot
                 || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
                 var result = await service.ExecuteAsync(context, argPos);
-                    if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
+                if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
-                    Console.WriteLine(result.ErrorReason);
+                    Console.WriteLine(result.ErrorReason+"drop");
                 }
             }
-                    
+
         }
     }
 }
