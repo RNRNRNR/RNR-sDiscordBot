@@ -30,7 +30,6 @@ namespace RNR_sDiscordBot
             if (alerts.ContainsKey(key))
             {
                 return String.Format(alerts[key], parameter);
-                blek
             }
             return "";
         }

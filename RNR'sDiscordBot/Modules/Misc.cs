@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using RNR_sDiscordBot.Core.UserAccs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace RNR_sDiscordBot.Modules
 {
     public class Misc : ModuleBase<SocketCommandContext>
     {
-        [Command("kot")]
+        [Command("myStats")]
         public async Task ewaQ()
         {
-            await Context.Channel.SendMessageAsync("DIEWORDK");
-            await Context.Message.DeleteAsync();
+            var account = UserAccs.GetAccount(Context.User);
+            await Context.Channel.SendMessageAsync($"U have {account.userID}-id and some{account.XP} XP, with {account.Points} points");
         }
         [Command("viva")]
         [RequireUserPermission(ChannelPermission.ManageChannel)]
