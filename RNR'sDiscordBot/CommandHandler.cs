@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Discord.Commands;
@@ -34,7 +31,7 @@ namespace RNR_sDiscordBot
                 var result = await service.ExecuteAsync(context, argPos);
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
-                    Console.WriteLine(result.ErrorReason);
+                    Console.WriteLine($"[{DateTime.Now}] "+result.ErrorReason);
                 }
             }
         }

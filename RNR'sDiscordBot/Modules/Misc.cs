@@ -1,10 +1,8 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using RNR_sDiscordBot.Core.UserAccs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RNR_sDiscordBot.Modules
@@ -24,6 +22,18 @@ namespace RNR_sDiscordBot.Modules
             var user = Context.User.Username;
             var formatedmsg = Utilities.GetFormattedAlert("xomrade", user);
             await Context.Channel.SendMessageAsync(formatedmsg);
+        }
+        [Command("crusade")]
+        public async Task Crusade()
+        {
+            //ulong id = 402882481625366540;
+            var channels = Context.Guild.TextChannels;
+            foreach(var channel in channels)
+            {
+                await Context.Channel.SendMessageAsync(channel.Name);
+            }
+
+
         }
     }
 }

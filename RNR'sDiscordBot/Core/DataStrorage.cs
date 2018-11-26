@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RNR_sDiscordBot.Core.UserAccs;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RNR_sDiscordBot.Core
 {

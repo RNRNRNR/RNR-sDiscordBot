@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Discord.WebSocket;
-using Newtonsoft.Json;
 using Discord;
 
 namespace RNR_sDiscordBot
