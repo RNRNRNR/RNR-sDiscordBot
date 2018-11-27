@@ -134,7 +134,8 @@
     <Compile Include="Core\DataStrorage.cs" />
     <Compile Include="Core\UserAccs\UserAcc.cs" />
     <Compile Include="Core\UserAccs\UserAccs.cs" />
-    <Compile Include="Modules\Misc.cs" />
+    <Compile Include="Modules\OtherCommands.cs" />
+    <Compile Include="Modules\StatsCommands.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
