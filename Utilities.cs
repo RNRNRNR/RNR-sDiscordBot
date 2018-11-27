@@ -12,7 +12,7 @@ namespace RNR_sDiscordBot
     class Utilities
     {
         private static Dictionary<string, string> alerts;
-        static Utilities()
+        static Utilities()//get the inf from json files
         {
             string jsonfile = File.ReadAllText("SystemLang/alerts.json");
             var data = JsonConvert.DeserializeObject<dynamic>(jsonfile);
@@ -25,7 +25,7 @@ namespace RNR_sDiscordBot
             return "";
         }
 
-        public static string GetFormattedAlert(string key, params object[] parameter)
+        public static string GetFormattedAlert(string key, params object[] parameter)// for formating the inf from json files like a "Who {0}",var
         {
             if (alerts.ContainsKey(key))
             {

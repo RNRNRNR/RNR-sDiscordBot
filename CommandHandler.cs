@@ -16,7 +16,7 @@ namespace RNR_sDiscordBot
             this.client = client;
             service = new CommandService();
             await service.AddModulesAsync(Assembly.GetEntryAssembly());
-            client.MessageReceived += HandleCommandAsync;
+            client.MessageReceived += HandleCommandAsync; //get msg from chat
         }
 
         private async Task HandleCommandAsync(SocketMessage s)
@@ -29,7 +29,7 @@ namespace RNR_sDiscordBot
                 || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
                 var result = await service.ExecuteAsync(context, argPos);
-                if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
+                if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)// error results
                 {
                     Console.WriteLine($"[{DateTime.Now}] "+result.ErrorReason);
                 }

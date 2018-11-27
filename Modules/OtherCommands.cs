@@ -45,11 +45,12 @@ namespace RNR_sDiscordBot.Modules
         }
         #endregion GetChats
         #region ClearChat
-        [Command("clear")]
+        /*[Command("clear")]
         public async Task ClearChat()
         {
 
-        }//not realized
+        }*/
         #endregion ClearChat
+        //not realized
     }
 }

@@ -32,7 +32,7 @@ namespace RNR_sDiscordBot.Core.UserAccs
             return GetOrCreateAccount(user.Id);
         }
 
-        private static UserAcc GetOrCreateAccount(ulong id)
+        private static UserAcc GetOrCreateAccount(ulong id) //try finding acc from base if no create it
         {
             var result = from a in accounts
                          where a.userID == id
