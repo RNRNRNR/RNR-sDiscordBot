@@ -25,6 +25,7 @@ namespace RNR_sDiscordBot
             if (msg == null) return;
             var context = new SocketCommandContext(client, msg);
             int argPos = 0;
+            if (!msg.Author.IsBot) Core.UserAccs.UserAccs.ExpSystematizator(msg.Author.Id);
             if (msg.HasStringPrefix(Config.bot.cmdPrefix, ref argPos)
                 || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
             {

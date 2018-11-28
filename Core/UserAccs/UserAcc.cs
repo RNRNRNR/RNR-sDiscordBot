@@ -4,8 +4,10 @@
     {
         public ulong userID { get; set; }
         
-        public int XP { get; set; }
+        public float XP { get; set; }
 
         public int Points { get; set; }
+
+        public int LVL { get; set; }
     }
 }

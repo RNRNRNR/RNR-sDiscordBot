@@ -39,10 +39,6 @@ namespace RNR_sDiscordBot.Modules
             }
             await Context.Channel.SendMessageAsync(FormatedList);
         }
-        private async Task HandleMsg(SocketMessage s)
-        {
-            var msg = s as SocketUserMessage;
-        }
         #endregion GetChats
         #region ClearChat
         /*[Command("clear")]
@@ -51,6 +47,14 @@ namespace RNR_sDiscordBot.Modules
 
         }*/
         #endregion ClearChat
+        //not realized
+        #region helpCommand
+        [Command("help")]
+        public async Task helper()
+        {
+            
+        }
+        #endregion
         //not realized
     }
 }

@@ -1,3 +1,4 @@
 {
-  "statinfo": "`{0}` has `{1}`, and some `{2}`"
+  "statinfo": "`{0}` has `{1}` EXP, and some `{2}`souls",
+  "lvlinfo" : "Your lvl `{0}`"
 }

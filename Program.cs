@@ -18,7 +18,7 @@ namespace RNR_sDiscordBot
             client = new DiscordSocketClient(new DiscordSocketConfig
             {
                 LogLevel = LogSeverity.Verbose
-            }); // initialize the client and command logs msgs
+            }); // Initialize the client and command logs msgs
             client.Log += Log;
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
