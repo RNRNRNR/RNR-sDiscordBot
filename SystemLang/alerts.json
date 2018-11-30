@@ -1,4 +1,5 @@
 {
   "statinfo": "`{0}` has `{1}` EXP, and some `{2}`souls",
-  "lvlinfo" : "Your lvl `{0}`"
+  "lvlinfo": "Your lvl `{0}`",
+  "tipinfo": " `{0}` earn `{1}` souls "
 }

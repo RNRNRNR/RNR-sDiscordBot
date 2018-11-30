@@ -31,6 +31,12 @@ namespace RNR_sDiscordBot
             return "";
         }
 
+        public static string GetTime()
+        {
+            string time = DateTime.Now.ToString();
+            return $"[{time}] ";
+        }
+
         public static string GetFormattedAlert(string key, object parameter)
         {
             return GetFormattedAlert(key,new object[] { parameter });

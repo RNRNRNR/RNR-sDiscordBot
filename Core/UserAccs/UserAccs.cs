@@ -26,6 +26,11 @@ namespace RNR_sDiscordBot.Core.UserAccs
         {
             DataStrorage.SaveUserAccounts(accounts, accsFile);
         }
+        
+        public static UserAcc GetGuildAcc(ulong id)
+        {
+            return GetOrCreateAccount(id);
+        }
 
         public static UserAcc GetAccount(SocketUser user)
         {
@@ -42,7 +47,7 @@ namespace RNR_sDiscordBot.Core.UserAccs
             return account;
         }
 
-        public static void ExpSystematizator(ulong id)//lvling system
+        public static void ExpSystematizator(ulong id) //lvling system
         {
             var acc = GetOrCreateAccount(id);
 
