@@ -28,14 +28,11 @@ namespace RNR_sDiscordBot.Modules
         }
 
         [Command("tip")]
+        [RequireUserPermission(Discord.GuildPermission.Administrator)]
         public async Task tip(string mention, string value)
         {
-            Console.WriteLine(mention);
             if (int.TryParse(value, out int tipvalue))
             {
-
-                try
-                {
                     var users = GetUserIdByMention(mention);
 
                     foreach (var user in users)
@@ -46,11 +43,6 @@ namespace RNR_sDiscordBot.Modules
                         await Context.Channel.SendMessageAsync(Utilities.GetFormattedAlert("tipinfo", user.Nickname, tipvalue.ToString()));
                         UserAccs.SaveAccounts();
                     }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
             }
         }
 
