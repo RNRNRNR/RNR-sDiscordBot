@@ -28,32 +28,39 @@ namespace RNR_sDiscordBot.Modules
         }
 
         [Command("tip")]
-        [RequireUserPermission(Discord.GuildPermission.Administrator)]
         public async Task tip(string mention, string value)
         {
-            if (int.TryParse(value, out int tipvalue))
+            if (int.TryParse(value, out int tipvalue) && mention != "@everyone" && mention != "@here")
             {
-                    var users = GetUserIdByMention(mention);
+                var user = GetUserIdByMention(mention);
 
-                    foreach (var user in users)
-                    {
-                        Console.WriteLine(Utilities.GetTime()+user.Nickname+$" +{tipvalue}");
-                        var account = UserAccs.GetGuildAcc(user.Id);
-                        account.Points += tipvalue;
-                        await Context.Channel.SendMessageAsync(Utilities.GetFormattedAlert("tipinfo", user.Nickname, tipvalue.ToString()));
-                        UserAccs.SaveAccounts();
-                    }
+                Console.WriteLine(Utilities.GetTime() + user.Nickname + $" +{tipvalue}");
+
+                var account = UserAccs.GetGuildAcc(user.Id);
+                var accounttipper = UserAccs.GetAccount(Context.User);
+
+                if(accounttipper.Points<tipvalue)
+                {
+                    await Context.Channel.SendMessageAsync($"U need{tipvalue - accounttipper.Points}");
+                    return;
+                }
+                Console.WriteLine("ok");
+                accounttipper.Points -= tipvalue;
+                account.Points += tipvalue;
+                await Context.Channel.SendMessageAsync(Utilities.GetFormattedAlert("tipinfo", user.Nickname, tipvalue.ToString()));
+                UserAccs.SaveAccounts();
             }
         }
 
-        public IEnumerable<SocketGuildUser> GetUserIdByMention(string mention)
+        public SocketGuildUser GetUserIdByMention(string mention)
         {
-            if(!mention.Contains("!")) mention = mention.Insert(2, "!");
+            if (!mention.Contains("!")) mention = mention.Insert(2, "!");
+
             var users = Context.Guild.Users;
-            var tipusers = from r in users
-                           where r.Mention == mention
-                           select r;
-            return tipusers;
+            var tipuser = from r in users
+                          where r.Mention == mention
+                          select r;
+            return tipuser.First();
         }
     }
 }
