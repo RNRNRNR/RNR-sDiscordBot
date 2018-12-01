@@ -1,7 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Discord;
+using Discord.WebSocket;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace RNR_sDiscordBot
 {
@@ -39,7 +42,7 @@ namespace RNR_sDiscordBot
 
         public static string GetFormattedAlert(string key, object parameter)
         {
-            return GetFormattedAlert(key,new object[] { parameter });
+            return GetFormattedAlert(key, new object[] { parameter });
         }
     }
 }

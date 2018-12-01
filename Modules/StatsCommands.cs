@@ -11,7 +11,7 @@ namespace RNR_sDiscordBot.Modules
     public class StatsCommands : ModuleBase<SocketCommandContext>
     {
         [Command("mystats")]
-        public async Task ewaQ() // check the user stats or create the acc in database
+        public async Task EwaQ() // check the user stats or create the acc in database
         {
             var account = UserAccs.GetAccount(Context.User);
             string msg = Utilities.GetFormattedAlert("statinfo", Context.User.Username, (int)account.XP, account.Points);
@@ -20,13 +20,14 @@ namespace RNR_sDiscordBot.Modules
         }
 
         [Command("mylvl")]
-        public async Task lvler()// get lvl of user
+        public async Task Lvler() // get lvl of user
         {
             var account = UserAccs.GetAccount(Context.User);
             string msg = Utilities.GetFormattedAlert("lvlinfo", account.LVL);
             await Context.Channel.SendMessageAsync(msg);
         }
 
+        #region tipcommand
         [Command("tip")]
         public async Task tip(string mention, string value)
         {
@@ -39,14 +40,21 @@ namespace RNR_sDiscordBot.Modules
                 var account = UserAccs.GetGuildAcc(user.Id);
                 var accounttipper = UserAccs.GetAccount(Context.User);
 
-                if(accounttipper.Points<tipvalue)
+                if (account == accounttipper)
                 {
-                    await Context.Channel.SendMessageAsync($"U need{tipvalue - accounttipper.Points}");
+                    await Context.Channel.SendMessageAsync("U can send souls to yourself");
                     return;
                 }
-                Console.WriteLine("ok");
+
+                if(accounttipper.Points<tipvalue)
+                {
+                    await Context.Channel.SendMessageAsync($"U need`{tipvalue - accounttipper.Points}`");
+                    return;
+                }
+
                 accounttipper.Points -= tipvalue;
                 account.Points += tipvalue;
+
                 await Context.Channel.SendMessageAsync(Utilities.GetFormattedAlert("tipinfo", user.Nickname, tipvalue.ToString()));
                 UserAccs.SaveAccounts();
             }
@@ -63,4 +71,5 @@ namespace RNR_sDiscordBot.Modules
             return tipuser.First();
         }
     }
+    #endregion tipcommand
 }

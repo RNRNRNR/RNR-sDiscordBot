@@ -27,7 +27,7 @@ namespace RNR_sDiscordBot
             await Task.Delay(-1);
         }
 
-        public async Task Log(LogMessage msg)
+         public async Task Log(LogMessage msg)
         {
             Console.WriteLine($"[{DateTime.Now}] " + msg.Message);
         }

@@ -1,5 +1,7 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using Discord.WebSocket;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -38,18 +40,32 @@ namespace RNR_sDiscordBot.Modules
         }
         #endregion GetChats
         #region ClearChat
-        /*[Command("clear")]
+        [Command("clear")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task ClearChat()
         {
-
-        }*/
+            int deletcount = 0;
+            await Context.Message.DeleteAsync();
+            var aMsgs = Context.Channel.GetMessagesAsync(100);
+            var msgs = await aMsgs.Flatten();
+            foreach (var msg in msgs)
+            {
+                if ((msg.Content.Contains("=") || msg.Content.Contains("~") || msg.Content.Contains(">")) && !msg.Author.IsBot)
+                {
+                    await msg.DeleteAsync();
+                    await Task.Delay(500);
+                }
+                deletcount++;
+            }
+            Console.WriteLine(Utilities.GetTime() + $"Deleted{deletcount.ToString()} messages");
+        }
         #endregion ClearChat
         //not realized
         #region helpCommand
         [Command("help")]
         public async Task helper()
         {
-            
+
         }
         #endregion
         //not realized
